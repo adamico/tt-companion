@@ -2,7 +2,8 @@ package me.kc00l.ttcompanion;
 
 import me.kc00l.ttcompanion.worldgen.biome.region.*;
 import me.kc00l.ttcompanion.worldgen.biome.surface.ModSurfaceRules;
-import me.kc00l.ttcompanion.worldgen.structure.ModStructures;
+import me.kc00l.ttcompanion.worldgen.structure.ModStructureSets;
+import me.kc00l.ttcompanion.worldgen.structure.ModStructureTypes;
 import net.minecraft.resources.ResourceLocation;
 import org.slf4j.Logger;
 
@@ -32,10 +33,9 @@ public class TTCompanion {
 
         NeoForge.EVENT_BUS.register(this);
 
-        // Register our structures
-        ModStructures.DEFERRED_REGISTRY_STRUCTURE.register(modEventBus);
-
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
+
+        ModStructureTypes.STRUCTURE_TYPES.register(modEventBus);
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {

@@ -22,10 +22,10 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Optional;
 
-public class QuarryStructures extends Structure {
+public class QuarryStructure extends Structure {
 
-    public static final MapCodec<QuarryStructures> CODEC = RecordCodecBuilder.mapCodec(instance ->
-            instance.group(QuarryStructures.settingsCodec(instance),
+    public static final MapCodec<QuarryStructure> CODEC = RecordCodecBuilder.mapCodec(instance ->
+            instance.group(QuarryStructure.settingsCodec(instance),
                     StructureTemplatePool.CODEC.fieldOf("start_pool").forGetter(structure -> structure.startPool),
                     ResourceLocation.CODEC.optionalFieldOf("start_jigsaw_name").forGetter(structure -> structure.startJigsawName),
                     Codec.intRange(0, 30).fieldOf("size").forGetter(structure -> structure.size),
@@ -34,7 +34,7 @@ public class QuarryStructures extends Structure {
                     Codec.intRange(1, 128).fieldOf("max_distance_from_center").forGetter(structure -> structure.maxDistanceFromCenter),
                     DimensionPadding.CODEC.optionalFieldOf("dimension_padding", JigsawStructure.DEFAULT_DIMENSION_PADDING).forGetter(structure -> structure.dimensionPadding),
                     LiquidSettings.CODEC.optionalFieldOf("liquid_settings", JigsawStructure.DEFAULT_LIQUID_SETTINGS).forGetter(structure -> structure.liquidSettings)
-                    ).apply(instance, QuarryStructures::new)
+                    ).apply(instance, QuarryStructure::new)
             );
 
     private final Holder<StructureTemplatePool> startPool;
@@ -46,15 +46,15 @@ public class QuarryStructures extends Structure {
     private final DimensionPadding dimensionPadding;
     private final LiquidSettings liquidSettings;
 
-    public QuarryStructures(Structure.StructureSettings config,
-                            Holder<StructureTemplatePool> startPool,
-                            Optional<ResourceLocation> startJigsawName,
-                            int size,
-                            HeightProvider startHeight,
-                            Optional<Heightmap.Types> projectStartToHeightmap,
-                            int maxDistanceFromCenter,
-                            DimensionPadding dimensionPadding,
-                            LiquidSettings liquidSettings) {
+    public QuarryStructure(Structure.StructureSettings config,
+                           Holder<StructureTemplatePool> startPool,
+                           Optional<ResourceLocation> startJigsawName,
+                           int size,
+                           HeightProvider startHeight,
+                           Optional<Heightmap.Types> projectStartToHeightmap,
+                           int maxDistanceFromCenter,
+                           DimensionPadding dimensionPadding,
+                           LiquidSettings liquidSettings) {
         super(config);
         this.startPool = startPool;
         this.startJigsawName = startJigsawName;
@@ -111,7 +111,7 @@ public class QuarryStructures extends Structure {
 
         // Check if the spot is valid for our structure. This is just as another method for cleanness.
         // Returning an empty optional tells the game to skip this spot as it will not generate the structure.
-        if(!QuarryStructures.extraSpawningChecks(context)) {
+        if(!QuarryStructure.extraSpawningChecks(context)) {
             return Optional.empty();
         }
 
@@ -154,6 +154,6 @@ public class QuarryStructures extends Structure {
 
     @Override
     public @NotNull StructureType<?> type() {
-        return ModStructures.QUARRY_STRUCTURES.get(); // Helps the game know how to turn this structure back to json to save to chunks
+        return ModStructureTypes.QUARRY_STRUCTURES.get(); // Helps the game know how to turn this structure back to json to save to chunks
     }
 }

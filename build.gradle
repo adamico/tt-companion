@@ -48,6 +48,22 @@ repositories {
             includeGroup "dev.architectury"
         }
     }
+
+    maven {
+        url "https://maven.terraformersmc.com"
+        content {
+            includeGroup "com.terraformersmc"
+            includeGroup "dev.emi"
+        }
+    }
+
+    // for Jade
+    maven {
+        url "https://www.cursemaven.com"
+        content {
+            includeGroup "curse.maven"
+        }
+    }
 }
 
 base.archivesName.set(mod_id)
@@ -144,6 +160,9 @@ configurations {
 }
 
 dependencies {
+    compileOnly "dev.emi:emi-neoforge:${project.emi_version}+${project.emi_minecraft_version}"
+    localRuntime "dev.emi:emi-neoforge:${project.emi_version}+${project.emi_minecraft_version}"
+
     // Example optional mod dependency with JEI
     // The JEI API is declared for compile time use, while the full JEI artifact is used at runtime
     compileOnly "mezz.jei:jei-${minecraft_version}-common-api:${jei_version}"
@@ -160,6 +179,9 @@ dependencies {
     implementation("maven.modrinth:modern-industrialization:${mi_version}")
 
     implementation 'com.github.glitchfiend:TerraBlender-neoforge:' + minecraft_version + '-' + terrablender_version
+
+    compileOnly "curse.maven:jade-324717:${project.jade_file_id}"
+    localRuntime "curse.maven:jade-324717:${project.jade_file_id}"
 
     // Example mod dependency using a mod jar from ./libs with a flat dir repository
     // This maps to ./libs/coolmod-${minecraft_version}-${coolmod_version}.jar
