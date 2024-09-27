@@ -1,0 +1,28 @@
+{
+  "placement": {
+    "type": "minecraft:concentric_rings",
+    "count": 16,
+    "distance": 24,
+    "preferred_biomes": "#minecraft:has_structure/mineshaft",
+    "salt": 2126950442,
+    "spread": 8
+  },
+  "structures": [
+    {
+      "structure": "ttcompanion:simple_uncommon_quarry_1",
+      "weight": 1
+    },
+    {
+      "structure": "ttcompanion:simple_uncommon_quarry_2",
+      "weight": 1
+    },
+    {
+      "structure": "ttcompanion:simple_uncommon_quarry_3",
+      "weight": 1
+    },
+    {
+      "structure": "ttcompanion:simple_uncommon_quarry_4",
+      "weight": 1
+    }
+  ]
+}

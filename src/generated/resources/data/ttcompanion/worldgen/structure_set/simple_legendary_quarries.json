@@ -1,0 +1,20 @@
+{
+  "placement": {
+    "type": "minecraft:concentric_rings",
+    "count": 8,
+    "distance": 48,
+    "preferred_biomes": "#minecraft:has_structure/mineshaft",
+    "salt": 1867895815,
+    "spread": 4
+  },
+  "structures": [
+    {
+      "structure": "ttcompanion:simple_legendary_quarry_1",
+      "weight": 1
+    },
+    {
+      "structure": "ttcompanion:simple_legendary_quarry_2",
+      "weight": 1
+    }
+  ]
+}
